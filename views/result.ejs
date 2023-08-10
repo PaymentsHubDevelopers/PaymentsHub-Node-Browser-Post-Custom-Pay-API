@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Payments Hub Developers</title>
+   <style>
+       		@font-face {
+			font-family: 'Figtree';
+			src: url('./assets/Figtree-VariableFont_wght.ttf') format('truetype');
+			font-weight: 700;
+			font-style: normal;
+		}
+
+       	body {
+			margin: auto;
+           	height: 100vh;
+           	width: 100vw;
+           	overflow: hidden;
+           	margin-top: 200px;
+           	background-color: #222529;
+			font-family: 'Figtree', sans-serif;
+			text-align: center;
+       	}
+
+		h1, h2 {
+			text-align: center;
+			color: #9A9FA2;
+		}
+
+		h1 {
+			margin-top: 2rem;
+			color: white;
+		}
+
+       	.paymentForm {
+           	background-color: white;
+           	height: fit-content;
+           	width: 200px;
+           	padding: 2rem;
+           	border-radius: 10px;
+			margin-top: 1rem;
+			text-align: center;
+			margin: 50px auto;
+       	}
+
+       	button {
+           	display: inline-block;
+           	padding: 10px 20px;
+           	background-color: #1FC4B3;
+           	color: #fff;
+           	font-size: 16px;
+           	font-weight: bold;
+           	text-align: center;
+           	text-decoration: none;
+           	border-radius: 4px;
+           	border: none;
+           	cursor: pointer;
+       	}
+
+       .container {
+           background-color: white;
+           height: fit-content;
+           width: 400px;
+           padding: 2rem;
+           border-radius: 10px;
+           display: flex;
+           flex-direction: column;
+           align-items: center;
+       }
+
+       .check {
+           width: 100px;
+           height: 100px;
+       }
+   </style>
+</head>
+<body>
+   <div class="container">
+       <h2>Payment Status</h2>
+       <p><%=status%></p>
+       <div class="check">
+           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+               <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+           </svg>
+       </div>
+       <button  id="refund-button">
+           Request Refund
+       </button>         
+   </div>
+
+   <script>
+       const refundBtn = document.getElementById('refund-button')
+
+       refundBtn.addEventListener('click', () => {
+           window.location.assign('/refundPayment')
+       })
+   </script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Payments Hub Developers</title>
+   <style>
+		@font-face {
+			font-family: 'Figtree';
+			src: url('./assets/Figtree-VariableFont_wght.ttf') format('truetype');
+			font-weight: 700;
+			font-style: normal;
+		}
+
+       	body {
+			margin: auto;
+           	height: 100vh;
+           	width: 100vw;
+           	overflow: hidden;
+           	margin-top: 200px;
+           	background-color: #222529;
+			font-family: 'Figtree', sans-serif;
+			text-align: center;
+       	}
+
+		h1, h2 {
+			text-align: center;
+			color: #9A9FA2;
+		}
+
+		h1 {
+			margin-top: 2rem;
+			color: white;
+		}
+
+       	.paymentForm {
+           	background-color: white;
+           	height: fit-content;
+           	width: 200px;
+           	padding: 2rem;
+           	border-radius: 10px;
+			margin-top: 1rem;
+			text-align: center;
+			margin: 50px auto;
+       	}
+
+       	button {
+           	display: inline-block;
+           	padding: 10px 20px;
+           	background-color: #1FC4B3;
+           	color: #fff;
+           	font-size: 16px;
+           	font-weight: bold;
+           	text-align: center;
+           	text-decoration: none;
+           	border-radius: 4px;
+           	border: none;
+           	cursor: pointer;
+       	}
+
+       .paymentFields {
+           display: flex;
+           flex-direction: column;
+       }
+
+       .paymentFields > div {
+           margin-bottom: 10px;
+       }
+
+       .paymentFields label {
+           display: block;
+           font-weight: bold;
+           margin-bottom: 5px;
+       }
+
+       .paymentFields input[type="number"] {
+           padding: 5px;
+           border-radius: 4px;
+           border: 1px solid #ccc;
+           font-size: 14px;
+       }
+
+       .paymentFields input[type="number"]:focus {
+           outline: none;
+           border-color: #3498db;
+       }
+   </style>
+</head>
+<body>
+   <form action="https://services.epxuap.com/browserpost/" method="post" class="paymentForm">
+       <h3>
+           Payment Form
+       </h3>
+       <div class="paymentFields">
+           <div>
+               <label>Account Number</label>
+               <input type="text" name="ACCOUNT_NBR" placeholder="Enter Account Number" value="4000520000000009">
+           </div>
+  
+           <div>
+               <label>Expiry Date</label>
+               <input type="text" name="EXP_DATE" placeholder="YYMM" value="2504">
+           </div>
+  
+           <div>
+               <label>CVV</label>
+               <input type="text" name="CVV2" placeholder="YYMM" value="123">
+           </div>
+       </div>
+
+       <div style="display: none;">
+           <input type="text" name="TRAN_CODE" value=<%=tran_code%>>
+           <input type="text" name="CUST_NBR" value=<%=cust_nbr%>>
+           <input type="text" name="MERCH_NBR" value=<%=merch_nbr%>>
+           <input type="text" name="DBA_NBR" value=<%=dba_nbr%>>
+           <input type="text" name="TERMINAL_NBR" value=<%=terminal_nbr%>>
+           <input type="text" name="INDUSTRY_TYPE" value=<%=industry_type%>>
+           <input type="text" name="TAC" id="tac">
+           <input type="text" name="AMOUNT" id="price">
+       </div>
+
+       <button type="submit">Submit</button>
+   </form>
+
+   <script>
+       document.addEventListener('DOMContentLoaded', () => {
+           const TAC = JSON.parse(localStorage.getItem('TAC'))
+           const productPrice = localStorage.getItem('productPrice')
+           document.getElementById('tac').value = TAC
+           document.getElementById('price').value = productPrice
+       })
+   </script>
+</body>
+</html>
